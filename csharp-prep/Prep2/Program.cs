@@ -4,6 +4,9 @@ class Program
 {
     static void Main(string[] args)
     {
+        string latterGrade;
+        bool isApproved = false;
+
         Console.WriteLine("Letter Grade Calculator");
         Console.Write("Please, enter your grade percentage:");
         String gradePorcentage = Console.ReadLine();
@@ -11,23 +14,39 @@ class Program
 
         if (grade>=90)
         {
-            Console.WriteLine("Your grade is: A");
+            latterGrade = "A";
+            isApproved = true;
         }
         else if (grade>=80)
         {
-            Console.WriteLine("Your grade is: B");
+            latterGrade = "B";
+            isApproved = true;
         }
         else if (grade>=70)
         {
-            Console.WriteLine("Your grade is: C");
+            latterGrade = "C";
+            isApproved = true;
         }
         else if (grade>=60)
         {
-            Console.WriteLine("Your grade is: D");
+            latterGrade = "E";
         }
         else
         {
-            Console.WriteLine("Your grade is: F");
+            latterGrade = "F";
         }
+
+        Console.WriteLine($"Your grade is: {latterGrade}");
+
+        if (isApproved)
+        {
+            Console.WriteLine("Congratulations, you have passed the class!");
+        }
+        else
+        {
+            Console.WriteLine("Sorry, you can't advance to the next class, but try again, I'm sure you'll do better!");
+        }
+
+
     }
 }
