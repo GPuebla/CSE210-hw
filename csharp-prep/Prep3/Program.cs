@@ -6,11 +6,15 @@ class Program
     {
         Console.WriteLine("-------------------------- Find the magic number --------------------------");
         string result= "";
+        bool guessedIt = false;
 
         Console.Write("What is the magic number? ");
         int magic_number = int.Parse(Console.ReadLine());
-        Console.Write("What is your guess? ");
-        int userGuess =  int.Parse(Console.ReadLine());
+
+        do
+        {
+            Console.Write("What is your guess? ");
+            int userGuess =  int.Parse(Console.ReadLine());
 
             if(magic_number < userGuess)
             {
@@ -23,9 +27,13 @@ class Program
             else if(magic_number == userGuess)
             {
                 result = "You guessed it!";
+                guessedIt = true;
             }
 
-        Console.WriteLine($"{result}");
+            Console.WriteLine($"{result}");
+
+        } while (!guessedIt);
+
     
     }
 }
