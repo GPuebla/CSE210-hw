@@ -8,8 +8,8 @@ class Program
         string result= "";
         bool guessedIt = false;
 
-        Console.Write("What is the magic number? ");
-        int magic_number = int.Parse(Console.ReadLine());
+        Random rd = new Random();
+        int magic_number = rd.Next(1,101);
 
         do
         {
@@ -33,7 +33,6 @@ class Program
             Console.WriteLine($"{result}");
 
         } while (!guessedIt);
-
     
     }
 }
