@@ -24,10 +24,18 @@ class Program
 
         foreach (var num in numbers)
         {
-          numSum += num; 
+          numSum += num;
+          if (num > largestNum)
+          {
+            largestNum = num;
+          }
         }
 
-        Console.WriteLine($"The sum is:{numSum}");
+        numAvg = numSum/(numbers.Count()-1);
+
+        Console.WriteLine($"The sum is: {numSum}");
+        Console.WriteLine($"The average is: {numAvg}");
+        Console.WriteLine($"The largest number is: {largestNum}");
         
     }
 }
