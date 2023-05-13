@@ -34,5 +34,10 @@ class Program
 
         journal1.displayAllEntries();
 
+        Console.WriteLine("Please, enter the filename to saving the infomation: ");
+        String userFileName = Console.ReadLine();
+
+        journal1.savingFile(userFileName);
+
     }
 }

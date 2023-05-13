@@ -17,6 +17,13 @@ class Entry
         this._prompt = pg.randomlyChoosePrompt();
     }
 
+    public Entry(String date, String prompt, String response)
+    {
+        this._date = date;
+        this._prompt = prompt;
+        this._response = response;
+    }
+
     public void displayEntry()
     {
         Console.WriteLine($"Date: {_date} Prompt: {_prompt} \n{_response}");
@@ -25,6 +32,11 @@ class Entry
     public String getEntry()
     {
         return $"Date: {_date} Prompt: {_prompt} \n{_response}";
+    }
+
+    public String getEntryCSV()
+    {
+        return $"{_date}|{_prompt}|{_response}";
     }
 
     
