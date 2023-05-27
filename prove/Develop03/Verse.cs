@@ -4,7 +4,7 @@ public class Verse
 {
     private int _numberVerse{get;}
     private String _bookName;
-    private String _chapterName;
+    private int _chapterNumber;
     private String _sentence;
     private bool _isAllHidden{get;set;}
     private int _executionAccount = 0;
@@ -14,19 +14,21 @@ public class Verse
 
     private List<Word> words = new List<Word>();
 
-    public Verse (int numVer, String bookName, Word singleWord )
+    public Verse (int numVer, int chapter,String bookName, Word singleWord )
     {
         this._numberVerse = numVer;
         this._bookName = bookName;
+        this._chapterNumber = chapter;
         checkedIfAllAreHidden();
         CountWordsHideAndVisible();
 
     }
 
-    public Verse (int numVer, String bookName, List<Word> listOfWords )
+    public Verse (int numVer, int chapter, String bookName, List<Word> listOfWords )
     {
         this._numberVerse = numVer;
         this._bookName = bookName;
+        this._chapterNumber = chapter;
         checkedIfAllAreHidden();
         CountWordsHideAndVisible();
 

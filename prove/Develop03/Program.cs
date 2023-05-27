@@ -33,27 +33,17 @@ class Program
         words2.Add(w9);
         words2.Add(w10);
 
-        Verse v1 = new Verse(1,"example1",words2);
+        Verse v1 = new Verse(5,3,"2 Kings",words2);
+        Reference ref1 = new Reference("2 Kings 3:5");
 
-        do
-        {
-            Console.WriteLine($"{v1.WriteVerse()}, {v1.GetTotalWordsHide()},{v1.GetTotalWordsVisible()}-- {v1.IsAllHidden}");
-            Console.ReadLine();
-            Console.Clear();
-        } while (!v1.IsAllHidden);
+        Console.WriteLine($"{ref1.BookReference} - {ref1.Chapter} - {ref1.VersesQty} - {ref1.ListOfVerses}");
 
-        // Console.WriteLine($"{v1.WriteVerse()}, {v1.GetTotalWordsHide()},{v1.GetTotalWordsVisible()} -- {v1.IsAllHidden}");
-        // Console.WriteLine($"{v1.WriteVerse()}, {v1.GetTotalWordsHide()},{v1.GetTotalWordsVisible()} -- {v1.IsAllHidden}");
-        // Console.WriteLine($"{v1.WriteVerse()}, {v1.GetTotalWordsHide()},{v1.GetTotalWordsVisible()} -- {v1.IsAllHidden}");
-        // Console.WriteLine($"{v1.WriteVerse()}, {v1.GetTotalWordsHide()},{v1.GetTotalWordsVisible()} -- {v1.IsAllHidden}");
-        // Console.WriteLine($"{v1.WriteVerse()}, {v1.GetTotalWordsHide()},{v1.GetTotalWordsVisible()} -- {v1.IsAllHidden}");
-    
-
-
-        // Console.WriteLine(v1.WriteVerse()); 
-        // Console.WriteLine(v1.WriteVerse()); 
-        // Console.WriteLine(v1.WriteVerse()); 
-        // Console.WriteLine(v1.WriteVerse()); 
+        // do
+        // {
+        //     Console.WriteLine($"{v1.WriteVerse()}, {v1.GetTotalWordsHide()},{v1.GetTotalWordsVisible()}-- {v1.IsAllHidden}");
+        //     Console.ReadLine();
+        //     Console.Clear();
+        // } while (!v1.IsAllHidden);
 
     }
 }
