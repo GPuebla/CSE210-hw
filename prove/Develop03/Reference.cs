@@ -38,7 +38,7 @@ public class Reference
         get{return this._versesQty;}
     }
 
-     public List<int> Verses
+    public List<int> Verses
     {
         get{return this._verses;}
     }

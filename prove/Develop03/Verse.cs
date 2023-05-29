@@ -2,9 +2,8 @@ using System;
 
 public class Verse
 {
-    private int _numberVerse{get;}
-    private String _bookName;
-    private int _chapterNumber;
+    
+    private Reference _reference{get;set;}
     private String _sentence;
     private bool _isAllHidden{get;set;}
     private int _executionAccount = 0;
@@ -14,26 +13,22 @@ public class Verse
 
     private List<Word> words = new List<Word>();
 
-    public Verse (int numVer, int chapter,String bookName, Word singleWord )
+    public Verse (String reference, String text)
     {
-        this._numberVerse = numVer;
-        this._bookName = bookName;
-        this._chapterNumber = chapter;
+        this._reference = new Reference(reference);
         checkedIfAllAreHidden();
         CountWordsHideAndVisible();
-
+        ConvertTextIntoVerse(text);
     }
 
-    public Verse (int numVer, int chapter, String bookName, List<Word> listOfWords )
+    public Verse (Reference reference, List<Word> listOfWords )
     {
-        this._numberVerse = numVer;
-        this._bookName = bookName;
-        this._chapterNumber = chapter;
+        this._reference = reference;
         checkedIfAllAreHidden();
         CountWordsHideAndVisible();
-
         this.words.AddRange(listOfWords);
     }
+
 
     private void checkedIfAllAreHidden()
     {
@@ -44,6 +39,7 @@ public class Verse
             }
         }
     }
+
 
     public List<Word> GetWords()
     {
@@ -127,10 +123,12 @@ public class Verse
         }
     }
 
+
     public int GetTotalWordsHide()
     {
         return this._totalWordsHide;
     }
+
     public int GetTotalWordsVisible()
     {
         return this._totalWordsVisible;
@@ -139,6 +137,21 @@ public class Verse
     public bool IsAllHidden
     {
         get{ return this._isAllHidden;}
+    }
+
+    private void ConvertTextIntoVerse(String text)
+    {
+        String[] words = text.Split(" ");
+
+        foreach (var word in words)
+        {
+            this.words.Add(new Word($"{word}"));
+        }
+    }
+
+    public Reference Reference
+    {
+        get{return this._reference;}
     }
 
 }

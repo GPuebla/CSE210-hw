@@ -5,45 +5,24 @@ class Program
     static void Main(string[] args)
     {
 
-        List<Word> words = new List<Word>();
-        List<Word> words2 = new List<Word>();
+        ShowScripture(new Verse("1 Nephi 3:7","And it came to pass that I, Nephi, said unto my father: I will go and do the things which the Lord hath commanded, for I know that the Lord giveth no commandments unto the children of men, save he shall prepare a way for them that they may accomplish the thing which he commandeth them."));
+        
 
-        Word w1 = new Word("Hello");
-        Word w2 = new Word("World!");
-        Word w3 = new Word("How");
-        Word w4 = new Word("are");
-        Word w5 = new Word("you?");
+        static void ShowScripture(Verse v)
+        {
+            do
+            {
+                Console.WriteLine($"{v.Reference.FullReferenceText} -> {v.WriteVerse()}");
 
-        Word w6 = new Word("This");
-        Word w7 = new Word("is");
-        Word w8 = new Word("a");
-        Word w9 = new Word("verse");
-        Word w10 = new Word("example");
-
-
-        words2.Add(w1);
-        words2.Add(w2);
-        words2.Add(w3);
-        words2.Add(w4);
-        words2.Add(w5);
-
-        words2.Add(w6);
-        words2.Add(w7);
-        words2.Add(w8);
-        words2.Add(w9);
-        words2.Add(w10);
-
-        Verse v1 = new Verse(5,3,"2 Kings",words2);
-        Reference ref1 = new Reference("2 Kings 3:5");
-
-        Console.WriteLine($"{ref1.BookReference} - {ref1.Chapter} - {ref1.VersesQty} - {ref1.ListOfVerses}");
-
-        // do
-        // {
-        //     Console.WriteLine($"{v1.WriteVerse()}, {v1.GetTotalWordsHide()},{v1.GetTotalWordsVisible()}-- {v1.IsAllHidden}");
-        //     Console.ReadLine();
-        //     Console.Clear();
-        // } while (!v1.IsAllHidden);
+                String answer = Console.ReadLine();
+                    if(answer == "quit")
+                    {
+                        break;
+                    }
+                Console.Clear();
+                
+            } while (!v.IsAllHidden);
+        }
 
     }
 }
