@@ -3,9 +3,9 @@ using System.IO;
 
 public class DataSet
 {
-    public List<String> _references = new List<String>();
-    public List<String> _verse_num = new List<String>();
-    public  List<String> _verse_text = new List<String>();
+    private List<String> _references = new List<String>();
+    private List<String> _verse_num = new List<String>();
+    private  List<String> _verse_text = new List<String>();
 
     public DataSet()
     {
@@ -38,12 +38,22 @@ public class DataSet
 
                 for (int i = 0; i < 5; i++)
                 {
-                    outputFile.WriteLine($"example{i+10}**{i+1}**aaaaa{i*3}aaaaa");
+                    outputFile.WriteLine($"example{i+10}**{i+1}**bbbbbb{i*3}aaaaa");
                 }
             }
         }
 
     public List<String> GetRefList()
+    {
+        return this._references;
+    }
+
+    public List<String> GetVerse_numList()
+    {
+        return this._references;
+    }
+
+    public List<String> GetVerse_textList()
     {
         return this._references;
     }

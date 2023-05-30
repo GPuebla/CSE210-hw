@@ -23,11 +23,11 @@ class Program
 
         DataSet d1 = new DataSet();
 
-        for (int i = 0; i < d1._references.Count(); i++)
+        for (int i = 0; i < d1.GetRefList().Count(); i++)
         {
-            Console.Write(d1._references[i]);
-            Console.Write(d1._verse_num[i]);
-            Console.Write(d1._verse_text[i]);
+            Console.Write(d1.GetRefList().[i]);
+            Console.Write(d1.GetVerse_numList()[i]);
+            Console.Write(d1.GetVerse_textList()[i]);
             Console.WriteLine(" ");
         }
 
