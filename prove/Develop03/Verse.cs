@@ -16,17 +16,19 @@ public class Verse
     public Verse (String reference, String text)
     {
         this._reference = new Reference(reference);
+        ConvertTextIntoVerse(text);
         checkedIfAllAreHidden();
         CountWordsHideAndVisible();
-        ConvertTextIntoVerse(text);
+        
     }
 
     public Verse (Reference reference, List<Word> listOfWords )
     {
         this._reference = reference;
+        this.words.AddRange(listOfWords);
         checkedIfAllAreHidden();
         CountWordsHideAndVisible();
-        this.words.AddRange(listOfWords);
+        
     }
 
 
