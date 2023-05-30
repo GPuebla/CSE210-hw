@@ -118,5 +118,3 @@ public class Reference
     }
 
 }
-
-// - "John 3:16" - - Proverbs 3:5-6 -
