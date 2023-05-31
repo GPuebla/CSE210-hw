@@ -57,32 +57,4 @@ public class Scripture
         get {return this._isAllVersesHidden;}
     }
 
-    // public void WriteCSV()
-    //     {
-    //         using (StreamWriter outputFile = new StreamWriter("DataSet.csv"))
-    //         {
-    //             outputFile.WriteLine("reference**verse_num**verse_text");
-
-
-    //             outputFile.WriteLine($"My favorite color is");
-    //         }
-    //     }
-
-
-    // public void ReadCSV()
-    //     {
-    //         string filename = "DataSet.csv";
-    //         string[] lines = System.IO.File.ReadAllLines(filename);
-
-    //             foreach (string line in lines)
-    //             {
-    //                 string[] parts = line.Split("**");
-
-    //                 _references.Add(parts[0]);
-    //                 _verse_num.Add(parts[1]);
-    //                 _verse_text.Add(parts[2]);
-                    
-    //             }
-    //     }
-
 }

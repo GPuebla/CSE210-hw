@@ -9,7 +9,6 @@ public class DataSet
 
     public DataSet()
     {
-        WriteCSV();
         ReadCSV();
     }
 
@@ -30,18 +29,33 @@ public class DataSet
             }
     }
 
-    public void WriteCSV()
+    public void WriteCSV( String filename = "DataSet2.csv" )
+    {
+        using (StreamWriter outputFile = new StreamWriter(filename))
         {
-            using (StreamWriter outputFile = new StreamWriter("DataSet2.csv"))
-            {
-                outputFile.WriteLine("reference**verse_num**verse_text");
+            
+            outputFile.WriteLine("reference**verse_num**verse_text");
 
-                for (int i = 0; i < 5; i++)
-                {
-                    outputFile.WriteLine($"example{i+10}**{i+1}**bbbbbb{i*3}aaaaa");
-                }
+            for (int i = 1; i < _references.Count(); i++)
+            {
+                outputFile.WriteLine($"{this._references[i]}**{this._verse_num[i]}**{this._verse_text[i]}");
             }
         }
+    }
+
+    public void WriteCSV( String refe, int verse, String text, String filename = "DataSet2.csv" )
+    {
+        using (StreamWriter outputFile = new StreamWriter(filename))
+        {
+            
+            outputFile.WriteLine("reference**verse_num**verse_text");
+
+            for (int i = 1; i < _references.Count(); i++)
+            {
+                outputFile.WriteLine($"{this._references[i]}**{this._verse_num[i]}**{this._verse_text[i]}");
+            }
+        }
+    }
 
     public List<String> GetRefList()
     {
@@ -50,12 +64,22 @@ public class DataSet
 
     public List<String> GetVerse_numList()
     {
-        return this._references;
+        return this._verse_num;
     }
 
     public List<String> GetVerse_textList()
     {
-        return this._references;
+        return this._verse_text;
+    }
+
+    public void AddVerse( String ref, String verse, String text)
+    {
+        this._references.Add(ref);
+        this._verse_num.Add(verse);
+        this._verse_text.Add(text);
+    }
+        
+        
     }
 
 
