@@ -129,5 +129,21 @@ public class DataSet
         WriteCSV();
     }
 
+    public void DeleteScripture( String refe)
+    {
+        for (int i = 0; i < _references.Count(); i++)
+        {
+            if(_references[i] == refe)
+            {
+                this._references.RemoveAt(i);
+                this._verse_num.RemoveAt(i);
+                this._verse_text.RemoveAt(i);
+            }
+
+        }
+
+        WriteCSV();
+    }
+
 
 }
