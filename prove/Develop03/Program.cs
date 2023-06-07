@@ -5,47 +5,108 @@ class Program
 {
     static void Main(string[] args)
     {
-        List<String> _verses = new List<String>();
-        List<String> _verses2 = new List<String>();
-        List<String> _versesExample = new List<String>();
-        
-        _verses.Add("Trust in the Lord with all thine heart; and lean not unto thine own dunderstanding.");
-        _verses.Add("In all thy ways acknowledge him, and he shall bdirect thy cpaths.");
-        _verses2.Add("And it came to pass that I, Nephi, said unto my father: I will go and do the things which the Lord hath commanded, for I know that the Lord giveth no commandments unto the children of men, save he shall prepare a way for them that they may accomplish the thing which he commandeth them.");
 
-        Scripture s1 = new Scripture("Proverbs 3:5-6",_verses);
-        Scripture s2 = new Scripture("1 Nephi 3:7",_verses2);
-        
+        bool defaultMode = false; 
+        int menuOption = 0;
 
         DataSet d1 = new DataSet();
-        // d1.AddScripture("1 Nephi 3:7","7","And it came to pass that I, Nephi, said unto my father: I will go and do the things which the Lord hath commanded, for I know that the Lord giveth no commandments unto the children of men, save he shall prepare a way for them that they may accomplish the thing which he commandeth them.");
+        List<String> listOfReferences = new List<string>();
+        listOfReferences = d1.GetListOfReferences();
 
-        // d1.AddScripture("Proverbs 3:5-6","5","Trust in the Lord with all thine heart; and lean not unto thine own dunderstanding.");
+        List<String> verses = new List<string>();
+        String reference = "";
 
-        // d1.AddScripture("Proverbs 3:5-6","6","And it came to pass that I, Nephi, said unto my father: I will go and do the things which the Lord hath commanded, for I know that the Lord giveth no commandments unto the children of men, save he shall prepare a way for them that they may accomplish the thing which he commandeth them.");
-
-        // _versesExample = d1.GetSpecificVerses("Proverbs 3:5-6");
-
-        _versesExample = d1.GetListOfReferences();
-
-        for (int i = 0; i < d1.GetRefList().Count(); i++)
-        {
-            Console.Write(d1.GetRefList()[i]+"--");
-            Console.Write(d1.GetVerse_numList()[i]+"--");
-            Console.Write(d1.GetVerse_textList()[i]);
-            Console.WriteLine(" ");
-        }
-
-        for (int i = 0; i < _versesExample.Count(); i++)
-        {
+        List<String> newVerses = new List<string>();
+        
+        do
+        {   
+            if(!defaultMode)
+            {
+                Console.WriteLine(" -------------------------------------- Scripture Memorizer Menu -------------------------------------- ");
+                Console.WriteLine("\n1) Memorize stored reference. \n2) Save new reference. \n3) Delete stored reference. \n4) Exit.");
+                Console.Write(" \n Please, select the option number that you want: ");
+                menuOption = int.Parse(Console.ReadLine());
+                Console.WriteLine("-----------------------------------------------------------------------------------------");
+            }
             
-            Console.WriteLine(_versesExample[i]);
-            Console.WriteLine("-----------------------------------------");
-    
-        }
+            switch (menuOption)
+            {
+                case 1:
+                    defaultMode = false;
+                    d1.ReadCSV();
 
+                    Console.WriteLine("Select one of the references saved: ");
+                    
 
+                    for (int i = 0; i < listOfReferences.Count(); i++)
+                    {
+                        Console.WriteLine($"{i+1}. {listOfReferences[i]}");
+                    }
+                
+                    int Ansewer1 = int.Parse(Console.ReadLine());
 
+                    reference = listOfReferences[Ansewer1-1];
+                    verses = d1.GetSpecificVerses(reference);
+
+                    Console.Clear();
+                    ShowScripture(new Scripture(reference,verses));                 
+
+                    break;
+                case 2:
+                    defaultMode = false;
+
+                    Console.WriteLine("Please enter a reference e.g. 'Proverbs 3:5-6'");
+                    String newReference = Console.ReadLine();
+
+                    Reference r1 = new Reference(newReference);
+
+                    String newReferenceText = r1.FullReferenceText;
+                    
+                    for (int i = 0; i < r1.Verses.Count(); i++)
+                    {
+                        Console.Write($"Please insert the verse {r1.Verses[i]}: ");
+                        String numVer = r1.Verses[i].ToString();
+                        d1.AddScripture(newReferenceText,numVer,Console.ReadLine());
+                    }
+
+                    Console.WriteLine($"You can now memorize {newReferenceText}, it was saved.");
+                    d1.WriteCSV();
+                    
+                    break;
+                case 3:
+                    defaultMode = false;
+
+                    Console.WriteLine("Option 3");
+                    
+                    break;
+                case 4:
+                    defaultMode = false;
+                    Console.WriteLine("Thank you for using the Memorizer scripture program, hope to see you again.\n");
+                    
+                    break;
+                default:
+                    defaultMode = true;
+                    for (int i = 0; i < 3; i++)
+                    {
+                      Console.WriteLine("The entered character isn't found among the options. Try again: ");
+                      menuOption = int.Parse(Console.ReadLine());  
+
+                      if (menuOption >0 && menuOption < 4)
+                      {
+                        break;
+                      }
+
+                      if(i==2)
+                      {
+                        Console.WriteLine("Sorry, your attempts have been exhausted.");
+                      }
+                    }
+                    break;
+            }
+
+        } while (menuOption >0 && menuOption < 4);
+
+        // ------------------------------------------------------------------------------------------------------
 
         static void ShowScripture(Scripture s)
         {
