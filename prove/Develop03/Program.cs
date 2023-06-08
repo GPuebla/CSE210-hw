@@ -33,7 +33,7 @@ class Program
             {
                 case 1:
                     defaultMode = false;
-                    d1.ReadCSV();
+                    // d1.ReadCSV();
 
                     listOfReferences.Clear();
                     listOfReferences = d1.GetListOfReferences();    
@@ -76,6 +76,7 @@ class Program
                     }
 
                     Console.WriteLine($"You can now memorize {newReferenceText}, it was saved.");
+                    
                     d1.WriteCSV();
                     
                     break;
