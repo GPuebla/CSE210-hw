@@ -138,6 +138,8 @@ public class DataSet
                 this._references.RemoveAt(i);
                 this._verse_num.RemoveAt(i);
                 this._verse_text.RemoveAt(i);
+
+                i -= 1;
             }
 
         }

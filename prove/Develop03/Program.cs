@@ -11,7 +11,7 @@ class Program
 
         DataSet d1 = new DataSet();
         List<String> listOfReferences = new List<string>();
-        listOfReferences = d1.GetListOfReferences();
+        listOfReferences = d1.GetListOfReferences();  
 
         List<String> verses = new List<string>();
         String reference = "";
@@ -35,6 +35,9 @@ class Program
                     defaultMode = false;
                     d1.ReadCSV();
 
+                    listOfReferences.Clear();
+                    listOfReferences = d1.GetListOfReferences();    
+
                     Console.WriteLine("Select one of the references saved: ");
                     
 
@@ -43,9 +46,9 @@ class Program
                         Console.WriteLine($"{i+1}. {listOfReferences[i]}");
                     }
                 
-                    int Ansewer1 = int.Parse(Console.ReadLine());
+                    int ansewer1 = int.Parse(Console.ReadLine());
 
-                    reference = listOfReferences[Ansewer1-1];
+                    reference = listOfReferences[ansewer1-1];
                     verses = d1.GetSpecificVerses(reference);
 
                     Console.Clear();
@@ -54,6 +57,9 @@ class Program
                     break;
                 case 2:
                     defaultMode = false;
+
+                    listOfReferences.Clear();
+                    listOfReferences = d1.GetListOfReferences();  
 
                     Console.WriteLine("Please enter a reference e.g. 'Proverbs 3:5-6'");
                     String newReference = Console.ReadLine();
@@ -76,8 +82,29 @@ class Program
                 case 3:
                     defaultMode = false;
 
-                    Console.WriteLine("Option 3");
+                    listOfReferences.Clear();
+                    listOfReferences = d1.GetListOfReferences();
+
+                    Console.WriteLine("Select the references that you want delete: ");
+
+                    for (int i = 0; i < listOfReferences.Count(); i++)
+                    {
+                        Console.WriteLine($"{i+1}. {listOfReferences[i]}");
+                    }
+
+                    int x = int.Parse(Console.ReadLine());
+
+                    String refer = listOfReferences[x-1];
+                    Console.WriteLine($"Are you sure you want to remove {refer}? y/n");
+                    String ansewer2 = Console.ReadLine();
                     
+                    if(ansewer2 == "y" || ansewer2 == "Y")
+                    {
+                        d1.DeleteScripture(refer);
+                    }
+                    
+
+                    d1.ReadCSV();
                     break;
                 case 4:
                     defaultMode = false;
