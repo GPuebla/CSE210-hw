@@ -63,17 +63,17 @@ public class Activity
 
     //----------------------------------------- Methods ----------------------------------------------\\
 
-     protected void DisplayStartMessage()
+     public void DisplayStartMessage()
     {
         Console.WriteLine($"Welcome to the {_nameActivity}");
     }
 
-    protected void ShowDescription()
+    public void DisplayDescription()
     {
         Console.WriteLine(_description);
     }
 
-    protected void DisplayFinalMessage()
+    public void DisplayFinalMessage()
     {
        Console.WriteLine($"You have completed another {_timeDuration} seconds of {_nameActivity}");
     }
@@ -93,11 +93,11 @@ public class Activity
     
     protected int ShowCountdown(int secondsTime) 
     {
-        for (int i = secondsTime; i >= 0; i--)
+        for (int i = secondsTime; i >= 1; i--)
         {
             Console.Write(i);
 
-            Thread.Sleep(1000);
+            Thread.Sleep(1100);
 
             if(i > 9)
             {
@@ -143,6 +143,15 @@ public class Activity
 
         return secondsTime;
     }
+
+    public void SetUserTimeSession()
+    {
+        Console.Write("\nHow long, in seconds, would you like for your session? ");
+        int userTimeSetion = int.Parse(Console.ReadLine());
+
+        _timeDuration = userTimeSetion;
+    }
+    
 
 
 }
