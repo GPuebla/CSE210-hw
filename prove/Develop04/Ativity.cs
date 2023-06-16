@@ -82,7 +82,7 @@ public class Activity
     {
         List<String> elementAndIndex = new List<String>();
         Random rnd = new Random();
-        int num = rnd.Next(0,elementlist.Count()+1);
+        int num = rnd.Next(0,elementlist.Count());
         String elementSelected = elementlist[num];
 
         elementAndIndex.Add(elementSelected);

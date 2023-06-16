@@ -2,16 +2,10 @@ using System;
 
 public class BreathingActivity:Activity
 {
-    private List<String> breathingList = new List<String>();
-
     public BreathingActivity()
     {
-        SetNameActivity("BreathingActivity");
+        SetNameActivity("Breathing Activity");
         SetDescription("This activity will help you relax by walking your through breathing in and out slowly. Clear your mind and focus on your breathing.");
-        
-        breathingList.Add("Breathe in...");
-        breathingList.Add("Now breathe out...");
-
     }
 
     public void ShownBreathingMessages()
