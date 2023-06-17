@@ -2,9 +2,11 @@ public class ReflectionActivity : Activity
 {
     List<String> QuestionsList = new List<String>();
     List<String> PromptList = new List<String>();
-    List<int> IndexAnswersSelected = new List<int>();
+    List<int> IndexQuetionsSelected = new List<int>();
+    List<int> IndexPromptSelected = new List<int>();
 
     private String _prompt;
+    private String _question;
 
     public ReflectionActivity()
     {
@@ -36,27 +38,55 @@ public class ReflectionActivity : Activity
         ShowSpinnerAnimation(5);
         Console.WriteLine("\nConsider the following prompt:");
 
-        do
-        {
-           List<string> Choose = new List<string>(ChooseRandomListElement( PromptList ));
-           index = int.Parse(Choose[1]);
 
-           if(!IndexAnswersSelected.Contains(index))
+        while (isIndexSelected == false)
+        {
+            List<string> Choose = new List<string>(ChooseRandomListElement( PromptList ));
+            index = int.Parse(Choose[1]);
+
+           if(!IndexPromptSelected.Contains(index))
            {
                 _prompt = Choose[0];
-                IndexAnswersSelected.Add(index);
                 isIndexSelected = true;
+                IndexPromptSelected.Add(index);
            }
-           
-        } while (isIndexSelected == false || !(IndexAnswersSelected.Count == PromptList.Count));
+        }
 
         Console.WriteLine($"--- {_prompt} ----");
 
         Console.WriteLine($"When you have something in mind, press enter to continue.");
 
-        if (IndexAnswersSelected.Count == PromptList.Count)
+        if (IndexPromptSelected.Count == PromptList.Count)
         {
-            IndexAnswersSelected.Clear();
+            IndexPromptSelected.Clear();
+
+        }  
+    }
+
+    public void DisplayReflectQuestion()
+    {
+        int index;
+        bool isIndexSelected = false;
+
+        while (isIndexSelected == false)
+        {
+            List<string> Choose = new List<string>(ChooseRandomListElement( QuestionsList ));
+            index = int.Parse(Choose[1]);
+
+           if(!IndexQuetionsSelected.Contains(index))
+           {
+                _question = Choose[0];
+                isIndexSelected = true;
+                IndexQuetionsSelected.Add(index);
+           }
+        }
+
+        Console.WriteLine($"--- {_question} ----");
+        ShowSpinnerAnimation(5);
+
+        if (IndexQuetionsSelected.Count == PromptList.Count)
+        {
+            IndexQuetionsSelected.Clear();
         }
             
     }

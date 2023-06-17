@@ -75,7 +75,8 @@ public class Activity
 
     public void DisplayFinalMessage()
     {
-       Console.WriteLine($"You have completed another {_timeDuration} seconds of {_nameActivity}");
+       Console.WriteLine($"Well done!! \nYou have completed another {_timeDuration} seconds of {_nameActivity}");
+       ShowSpinnerAnimation(5);
     }
 
     protected List<String> ChooseRandomListElement( List<String> elementlist) 
@@ -91,7 +92,7 @@ public class Activity
         return elementAndIndex;
     }
     
-    protected int ShowCountdown(int secondsTime) 
+    public int ShowCountdown(int secondsTime) 
     {
         for (int i = secondsTime; i >= 1; i--)
         {
@@ -110,7 +111,7 @@ public class Activity
         return secondsTime;
     }
 
-    protected int ShowSpinnerAnimation(int secondsTime) 
+    public int ShowSpinnerAnimation(int secondsTime) 
     {
         List<String> animationElements = new List<string>();
         animationElements.Add("|");
