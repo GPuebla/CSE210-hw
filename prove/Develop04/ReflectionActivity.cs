@@ -88,11 +88,6 @@ public class ReflectionActivity : Activity
             Console.Write($"{_question} ");
             ShowSpinnerAnimation(13);
             Console.WriteLine();
-
-            if (IndexQuetionsSelected.Count == PromptList.Count)
-            {
-                IndexQuetionsSelected.Clear();
-            }
             
         }
     }

@@ -55,7 +55,12 @@ class Program
                 case 3:
                     defaultMode = false;
 
-                    Console.WriteLine("option3"); 
+                    ListingActivity lA1 = new ListingActivity();
+
+                    lA1.DisplayStartMessage();
+                    lA1.DisplayDescription();
+                    lA1.SetUserTimeSession();
+                    lA1.DisplayPromptQuestions(); 
 
                     break;
                 case 4:

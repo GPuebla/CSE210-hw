@@ -21,7 +21,31 @@ public class ListingActivity:Activity
         AnswersList.Add(answer);
     }
 
-    
+    public void DisplayPromptQuestions()
+    {
+        Console.Clear();
+        Console.WriteLine("Get ready...");
+        ShowSpinnerAnimation(5);
+        Console.WriteLine("\nList as many responses you can to the following prompt: \n");
+
+
+        List<string> Choose = new List<string>(ChooseRandomListElement( QuestionsList ));
+
+        Console.WriteLine($"--- {Choose[0]} ----");
+        Console.Write($"Yoy may begin in: \n");
+        ShowCountdown(5);
+
+        for (int i = 0; i < GetTimeDuration() ; i ++)
+        {
+            Console.Write("> ");
+            AnswersList.Add(Console.ReadLine());
+            i += 4;
+        }
+        
+        Console.WriteLine($"You listed {AnswersList.Count} items");
+        ShowSpinnerAnimation(5);
+
+    }
 
 
 
