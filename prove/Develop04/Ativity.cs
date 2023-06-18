@@ -65,7 +65,7 @@ public class Activity
 
      public void DisplayStartMessage()
     {
-        Console.WriteLine($"Welcome to the {_nameActivity}");
+        Console.WriteLine($"\nWelcome to the {_nameActivity}\n");
     }
 
     public void DisplayDescription()
@@ -75,7 +75,9 @@ public class Activity
 
     public void DisplayFinalMessage()
     {
-       Console.WriteLine($"Well done!! \nYou have completed another {_timeDuration} seconds of {_nameActivity}");
+       Console.WriteLine("\nWell done!! ");
+       ShowSpinnerAnimation(5);
+       Console.WriteLine($"\nYou have completed another {_timeDuration} seconds of {_nameActivity}");
        ShowSpinnerAnimation(5);
     }
 

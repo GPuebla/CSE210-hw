@@ -36,8 +36,8 @@ public class ReflectionActivity : Activity
 
         Console.WriteLine("Get ready...");
         ShowSpinnerAnimation(5);
-        Console.WriteLine("\nConsider the following prompt:");
-
+        Console.WriteLine("\nConsider the following prompt:\n");
+        Console.Clear();
 
         while (isIndexSelected == false)
         {
@@ -52,8 +52,7 @@ public class ReflectionActivity : Activity
            }
         }
 
-        Console.WriteLine($"--- {_prompt} ----");
-
+        Console.WriteLine($"--- {_prompt} ----\n");
         Console.WriteLine($"When you have something in mind, press enter to continue.");
 
         if (IndexPromptSelected.Count == PromptList.Count)
@@ -65,34 +64,37 @@ public class ReflectionActivity : Activity
 
     public void DisplayReflectQuestion()
     {
-        int index;
-        bool isIndexSelected = false;
+        DateTime startTime = DateTime.Now;
+        DateTime endTime = startTime.AddSeconds(GetTimeDuration());
 
-        while (isIndexSelected == false)
+        while (DateTime.Now < endTime)
         {
-            List<string> Choose = new List<string>(ChooseRandomListElement( QuestionsList ));
-            index = int.Parse(Choose[1]);
+            int index;
+            bool isIndexSelected = false;
 
-           if(!IndexQuetionsSelected.Contains(index))
-           {
-                _question = Choose[0];
-                isIndexSelected = true;
-                IndexQuetionsSelected.Add(index);
-           }
-        }
+            while (isIndexSelected == false)
+            {
+                List<string> Choose = new List<string>(ChooseRandomListElement( QuestionsList ));
+                index = int.Parse(Choose[1]);
 
-        Console.WriteLine($"--- {_question} ----");
-        ShowSpinnerAnimation(5);
+                if(!IndexQuetionsSelected.Contains(index))
+                {
+                        _question = Choose[0];
+                        isIndexSelected = true;
+                        IndexQuetionsSelected.Add(index);
+                }
+            }
 
-        if (IndexQuetionsSelected.Count == PromptList.Count)
-        {
-            IndexQuetionsSelected.Clear();
-        }
+            Console.Write($"{_question} ");
+            ShowSpinnerAnimation(13);
+            Console.WriteLine();
+
+            if (IndexQuetionsSelected.Count == PromptList.Count)
+            {
+                IndexQuetionsSelected.Clear();
+            }
             
+        }
     }
-
-    
-
-
 
 }

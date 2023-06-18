@@ -10,11 +10,13 @@ class Program
         do
         {   
             if(!defaultMode)
-            {
+            {   
+                Console.Clear();
                 Console.WriteLine(" -------------------------------------- Menu -------------------------------------- ");
-                Console.WriteLine("\n1) Option 1 \n2) Option 2. \n3) Option 3. \n4) Exit.");
+                Console.WriteLine("\n1) Breathing Activity. \n2) Reflection Activity. \n3) Listing Activity. \n4) Quit.");
                 Console.Write(" \n Please, select the option number that you want: ");
                 menuOption = int.Parse(Console.ReadLine());
+                Console.Clear();
                 Console.WriteLine("-----------------------------------------------------------------------------------------");
             }
             
@@ -23,9 +25,7 @@ class Program
                 case 1:
                     defaultMode = false;  
 
-                    Console.WriteLine("option1");
-
-                     BreathingActivity bA1 = new BreathingActivity();
+                    BreathingActivity bA1 = new BreathingActivity();
 
                     bA1.DisplayStartMessage();
                     bA1.DisplayDescription();
@@ -37,21 +37,20 @@ class Program
                 case 2:
                     defaultMode = false;
 
-                    Console.WriteLine("option2");  
-
-                    
                     ReflectionActivity rA1 = new ReflectionActivity();
-                    
+
+                    rA1.DisplayStartMessage();
+                    rA1.DisplayDescription();
+                    rA1.SetUserTimeSession();
                     rA1.DisplayPrompt();
                     Console.ReadLine();
-                    Console.WriteLine("\nNow poder on each of the following questions as they related to this experience. \nYou may begin in: ");
+                    Console.WriteLine("Now poder on each of the following questions as they related to this experience.");
+                    Console.Write("You may begin in: ");
                     rA1.ShowCountdown(5);
+                    Console.WriteLine();
 
-                    for (int i = 0; i < 3; i++)
-                    {
                     rA1.DisplayReflectQuestion(); 
-                    }
-                    
+                    rA1.DisplayFinalMessage();
                     break;
                 case 3:
                     defaultMode = false;
