@@ -11,13 +11,13 @@ public class SimpleGoal:Goal
 
     public override String ConcatenateAttribute()
     {
-        String text = $"{GetGoalName()}:Simple, {GetGoalDescription()}, {GetValueOfPoints()}, {GetIsAchieved()}";
+        String text = $"SimpleGoal:{GetGoalName()}, {GetGoalDescription()}, {GetValueOfPoints()}, {GetIsAchieved()}";
         SetConcatenatedAttribute(text);
         return text;
     }
 
     public override void IncreaseScore()
     {
-
+        SetScore(GetValueOfPoints());
     }
 }

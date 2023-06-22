@@ -9,6 +9,7 @@ class Program
 
         SimpleGoal sGoal1 = new SimpleGoal("Goal Example 1","This goal, is just an example",30);
 
+        sGoal1.IncreaseScore();
         Console.WriteLine(sGoal1.ConcatenateAttribute());
 
     }

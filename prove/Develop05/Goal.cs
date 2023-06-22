@@ -5,7 +5,7 @@ public abstract class Goal
     private String _goalName{get; set;}
     private String _goalDescription;
     private bool _isAchieved;
-    private int _score;
+    protected int _score;
     private int _valueOfPoints;
     private String _concatenatedAttribute;
     private String _checkBox = "[ ]";
@@ -46,6 +46,11 @@ public abstract class Goal
     public int GetScore()
     {
         return _score;
+    }
+
+    public void SetScore(int points)
+    {
+        _score += points;
     }
 
     public int GetValueOfPoints()
