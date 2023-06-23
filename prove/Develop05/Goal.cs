@@ -2,9 +2,9 @@ using System;
 
 public abstract class Goal
 {
-    private String _goalName{get; set;}
+    private String _goalName;
     private String _goalDescription;
-    private bool _isAchieved;
+    protected bool _isAchieved;
     protected int _score;
     private int _valueOfPoints;
     private String _concatenatedAttribute;
@@ -47,17 +47,14 @@ public abstract class Goal
     {
         return _score;
     }
-
     public void SetScore(int points)
     {
         _score += points;
     }
-
     public int GetValueOfPoints()
     {
         return _valueOfPoints;
     }
-
     public bool GetIsAchieved()
     {
        return _isAchieved;
@@ -76,5 +73,13 @@ public abstract class Goal
 
     public abstract String ConcatenateAttribute();
     public abstract void IncreaseScore();
+
+    private void CheckIfIsAcomplished()
+    {
+        if(_isAchieved)
+        {
+            _checkBox = "[X]";
+        }
+    }
     
 }
