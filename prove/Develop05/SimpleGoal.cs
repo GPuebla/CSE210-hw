@@ -2,21 +2,26 @@ using System;
 
 public class SimpleGoal:Goal
 {
-    public SimpleGoal(String goalName, String goalDescription, int valueOfPoints) : base (goalName, goalDescription, valueOfPoints)
+    public SimpleGoal(String goalName, String goalDescription, int valueOfPoints, bool isAchieved = false, int score = 0) : base (goalName, goalDescription, valueOfPoints)
     {
-       
+       _isAchieved = isAchieved;
+       _score = score;
     }
 
     public override String ConcatenateAttribute()
     {
-        String text = $"SimpleGoal**{GetGoalName()}**{GetGoalDescription()}**{GetValueOfPoints()}**{GetIsAchieved()}";
+        String text = $"SimpleGoal**{GetGoalName()}**{GetGoalDescription()}**{GetValueOfPoints()}**{GetIsAchieved()}**{GetScore()}";
         SetConcatenatedAttribute(text);
         return text;
     }
 
     public override void IncreaseScore()
     {
-        SetScore(GetValueOfPoints());
-        _isAchieved = true;
+        if(!_isAchieved)
+        {
+            SetScore(GetValueOfPoints());
+            _isAchieved = true;
+        }
     }
+      
 }

@@ -4,18 +4,14 @@ public class CheckListGoal:Goal
     private int _timesToAcomplish;
     private int _timesAchieved;
 
-    public CheckListGoal(String goalName, String goalDescription, int valueOfPoints, int achievedBonus, int timesToAcomplish ) : base (goalName, goalDescription, valueOfPoints)
-    {
-        _achievedBonus = achievedBonus;
-        _timesToAcomplish = timesToAcomplish;
-        CheckAcomplishment();
-    }
 
-    public CheckListGoal(String goalName, String goalDescription, int valueOfPoints, int achievedBonus, int timesToAcomplish, int timesAchieved = 0) : base (goalName, goalDescription, valueOfPoints)
+    public CheckListGoal(String goalName, String goalDescription, int valueOfPoints, int achievedBonus, int timesToAcomplish, int timesAchieved = 0,bool isAchieved = false, int score = 0) : base (goalName, goalDescription, valueOfPoints)
     {
         _achievedBonus = achievedBonus;
         _timesToAcomplish = timesToAcomplish;
         _timesAchieved = timesAchieved;
+        _isAchieved = isAchieved;
+        _score = score;
         CheckAcomplishment();
     }
 
@@ -23,7 +19,7 @@ public class CheckListGoal:Goal
 
     public override String ConcatenateAttribute()
     {
-        String text = $"CheckListGoal**{GetGoalName()}**{GetGoalDescription()}**{GetValueOfPoints()}**{_achievedBonus}**{_timesToAcomplish}**{GetIsAchieved()}";
+        String text = $"CheckListGoal**{GetGoalName()}**{GetGoalDescription()}**{GetValueOfPoints()}**{_achievedBonus}**{_timesToAcomplish}**{_timesAchieved}**{GetIsAchieved()}**{GetScore()}";
         SetConcatenatedAttribute(text);
         return text;
     }
@@ -31,6 +27,7 @@ public class CheckListGoal:Goal
     public override void IncreaseScore()
     {
         SetScore(GetValueOfPoints());
+        _timesAchieved++;
         CheckAcomplishment();
     }
 
