@@ -66,7 +66,6 @@ class Program
             {
                 case 1:
                     defaultMode = false;  
-                    Console.WriteLine("Option 1");
                     CreatNewGoal(d);
 
                     break;
@@ -95,6 +94,7 @@ class Program
                     Goal goalChoose = d.GetGoalList()[choose-1];
                     goalChoose.IncreaseScore();
 
+                    d.DisplayGoalList();
                     Console.Write($"\nCongratulations! You have earned {goalChoose.GetValueOfPoints()} points!\n");
                     
                     break;

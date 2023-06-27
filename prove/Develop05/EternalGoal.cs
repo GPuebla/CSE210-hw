@@ -18,5 +18,6 @@ public class EternalGoal:Goal
     public override void IncreaseScore()
     {
         SetScore(GetValueOfPoints());
+        CheckIfIsAcomplished();
     }
 }

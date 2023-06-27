@@ -88,7 +88,7 @@ public abstract class Goal
     public abstract String ConcatenateAttribute();
     public abstract void IncreaseScore();
 
-    private void CheckIfIsAcomplished()
+    public void CheckIfIsAcomplished()
     {
         if(_isAchieved)
         {

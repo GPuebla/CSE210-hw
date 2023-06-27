@@ -22,6 +22,7 @@ public class SimpleGoal:Goal
         if(!_isAchieved)
         {
             SetScore(GetValueOfPoints());
+            CheckIfIsAcomplished();
             _isAchieved = true;
         }
     }

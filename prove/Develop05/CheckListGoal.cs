@@ -31,6 +31,7 @@ public class CheckListGoal:Goal
         SetScore(GetValueOfPoints());
         _timesAchieved++;
         CheckAcomplishment();
+        CheckIfIsAcomplished();
     }
 
     private void CheckAcomplishment()
