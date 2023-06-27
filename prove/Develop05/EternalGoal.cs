@@ -4,6 +4,8 @@ public class EternalGoal:Goal
     {
         _isAchieved = isAchieved;
         _score = score;
+        SetTypeOfGoal("eternal");
+        ConcatenateAttribute();
     }
 
     public override String ConcatenateAttribute()

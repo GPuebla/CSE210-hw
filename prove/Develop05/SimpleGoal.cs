@@ -6,6 +6,8 @@ public class SimpleGoal:Goal
     {
        _isAchieved = isAchieved;
        _score = score;
+       SetTypeOfGoal("simple");
+       ConcatenateAttribute();
     }
 
     public override String ConcatenateAttribute()

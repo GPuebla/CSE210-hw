@@ -12,7 +12,9 @@ public class CheckListGoal:Goal
         _timesAchieved = timesAchieved;
         _isAchieved = isAchieved;
         _score = score;
+        SetTypeOfGoal("checklist");
         CheckAcomplishment();
+        ConcatenateAttribute();
     }
 
 
@@ -39,4 +41,11 @@ public class CheckListGoal:Goal
             SetScore(_achievedBonus);
         }
     }
+
+      public override String GetInfo()
+    {
+        return $"{GetCheckBox()} {GetGoalName()} ({GetGoalDescription()}) -- Currently completed {_timesAchieved}/{_timesToAcomplish}.";
+    }
+
+  
 }

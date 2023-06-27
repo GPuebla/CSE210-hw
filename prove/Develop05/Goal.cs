@@ -6,6 +6,7 @@ public abstract class Goal
     private String _goalDescription;
     protected bool _isAchieved;
     protected int _score;
+    private String _typeOfGoal;
     private int _valueOfPoints;
     private String _concatenatedAttribute;
     private String _checkBox = "[ ]";
@@ -67,9 +68,22 @@ public abstract class Goal
 
     public void SetConcatenatedAttribute( String text)
     {
-        text = _concatenatedAttribute;
+         _concatenatedAttribute = text;
     }
 
+    public String GetTypeOfGoal()
+    {
+        return _typeOfGoal;
+    }
+    protected void SetTypeOfGoal(String typeOfGoal)
+    {
+        _typeOfGoal = typeOfGoal;
+    }
+
+    public virtual String GetInfo()
+    {
+        return $"{_checkBox} {_goalName} ({_goalDescription}";
+    }
 
     public abstract String ConcatenateAttribute();
     public abstract void IncreaseScore();

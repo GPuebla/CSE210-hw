@@ -96,9 +96,17 @@ public class DataSet
         
     }
 
-    private void DisplayGoalList()
+    public void DisplayGoalList()
     {
-        
+        updateScore();
+        Console.WriteLine("\n------------------------------------ List of Goals: ------------------------------------ ");
+        Console.WriteLine($"Total Score: {_score}\n");
+        int i = 1;
+        foreach (var goal in goals)
+        {   
+            Console.WriteLine($"{i}. {goal.GetInfo()})");
+            i++;
+        }   
     }
 
     public void AddGoal(Goal g)
@@ -119,6 +127,18 @@ public class DataSet
     public void SetScore(int score)
     {
         _score = score;
+    }
+
+    public void updateScore()
+    {
+        int totalScore = 0;
+
+        foreach (var goal in goals)
+        {
+           totalScore += goal.GetScore();
+        }
+
+        _score = totalScore;
     }
 
 
