@@ -1,4 +1,0 @@
-100
-CheckListGoal**Sleep 7 hour by 5 days**Sleep sufficient time to be well during day**20**300**10**1**False**20
-SimpleGoal**Example 2**This is an example**20**True**20
-SimpleGoal**qqqqqq**tgas jejbd asj**60**True**60

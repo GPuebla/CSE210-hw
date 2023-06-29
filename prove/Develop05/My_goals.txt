@@ -1,3 +1,4 @@
-0
-EternalGoal**Eternal Goal Example 1**This goal, is just an example**15**False**75
-CheckListGoal**CheckList Goal Example 1**This goal, is just an example**50**500**5**5**True**750
+50
+SimpleGoal**Read a book**I must read a book before the end of this year**1000**False**0
+EternalGoal**Register my impressions**I should write my journal at least once a week for the rest of my life.**30**False**0
+CheckListGoal**Keep myself fit**Three days out of every week I will go for a 15 minute run and do 15 minutes of exercise before going to work**50**500**30**1**False**50

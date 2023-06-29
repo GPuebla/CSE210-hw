@@ -62,8 +62,8 @@ public class DataSet
                    description = parts[2];
                    points = int.Parse(parts[3]);
                    bonus = int.Parse(parts[4]);
-                   timeAcomplished = int.Parse(parts[5]);
-                   timeToAchieve = int.Parse(parts[6]);
+                   timeAcomplished = int.Parse(parts[6]);
+                   timeToAchieve = int.Parse(parts[5]);
                    isgoalAchieved = bool.Parse(parts[7]);
                 }
 
@@ -91,11 +91,6 @@ public class DataSet
             }
     }
 
-    private void ShowScore()
-    {
-        
-    }
-
     public void DisplayGoalList()
     {
         updateScore();
@@ -104,7 +99,8 @@ public class DataSet
         int i = 1;
         foreach (var goal in goals)
         {   
-            Console.WriteLine($"{i}. {goal.GetInfo()})");
+            goal.CheckIfIsAcomplished();
+            Console.WriteLine($"{i}. {goal.GetInfo()}");
             i++;
         }   
     }
