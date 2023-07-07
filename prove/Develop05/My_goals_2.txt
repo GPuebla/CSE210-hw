@@ -1,4 +1,0 @@
-0
-SimpleGoal**Simple Goal Example 1**This goal, is just an example**30**True**30
-EternalGoal**Eternal Goal Example 1**This goal, is just an example**15**False**75
-CheckListGoal**CheckList Goal Example 1**This goal, is just an example**50**500**5**5**True**750

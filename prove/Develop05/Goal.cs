@@ -20,7 +20,7 @@ public abstract class Goal
         _valueOfPoints = valueOfPoints;
         _isAchieved = false;
         _score = 0;
-
+        CheckIfIsAcomplished();
         ConcatenateAttribute();
     }
 
@@ -82,7 +82,7 @@ public abstract class Goal
 
     public virtual String GetInfo()
     {
-        return $"{_checkBox} {_goalName} ({_goalDescription}";
+        return $"{_checkBox} {_goalName} ({_goalDescription})";
     }
 
     public abstract String ConcatenateAttribute();
