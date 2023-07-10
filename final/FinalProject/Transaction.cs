@@ -31,4 +31,34 @@ public class Transaction
     {
         return $"${_amount}-{_description}-{_category}-{_date}-{_transactionId}";
     }
+
+    public DateTime Date
+    {
+        get {return _date;}
+    }
+
+    public double Amount
+    {
+        get{return _amount;}
+        set{_amount =value;}
+    }
+
+    public String TransactionId
+    {
+        get{return _transactionId;}
+    }
+
+    public String Description
+    {
+        get{return _description;}
+        set{_description =value;}
+    }
+
+    public String Category
+    {
+        get{return _category;}
+        set{_category =value;}
+    }
+
+    
 }
