@@ -6,24 +6,37 @@ class Program
     {
 
         FinancialRecord record1 = new FinancialRecord();
-        List<Transaction> transactions = new List<Transaction>();
+        
+        record1.AddTransaction(new Income(3500,"Paimment of salary",record1.GetCategories[0],record1));
+        record1.AddTransaction(new Expense(300,"Paimment of house rent",record1.GetCategories[4],record1));
+        record1.AddTransaction(new Income(500,"Bonus for achievement",record1.GetCategories[0],6,28,2023,record1));
+        record1.AddTransaction(new Expense(40,"Family outing to a restaurant",record1.GetCategories[6],6,29,2023,record1));
+
+        Console.WriteLine("-----------------------------------------------------------------------------------");
+
+        foreach (var transaction in record1.GetTransactions)
+        {
+            Console.WriteLine($"{transaction.ToString()}");
+        }
+
+        Console.WriteLine("");
+
+        record1.ShowDetailCategory();
+
+        Console.WriteLine("");
+
+        Console.WriteLine("Totoal Expenses: $"+record1.TotalExpenses);
+        Console.WriteLine("Totoal Income: $"+record1.TotalIncome);
+        Console.WriteLine("Balanse: $"+record1.Balance);
+
+        Console.WriteLine("-----------------------------------------------------------------------------------");
+
+        record1.GetCategories[0].DisplayDetail();
+        record1.GetCategories[4].DisplayDetail();
+        record1.GetCategories[6].DisplayDetail();
+        
 
         
-        transactions.Add(new Income(3500,"Paimment of salary","Salary"));
-        transactions.Add(new Expense(300,"Paimment of house rent","Rent"));
-        transactions.Add(new Income(500,"Bonus for achievement","Salary",6,28,2023));
-        transactions.Add(new Expense(40,"Family outing to a restaurant","Recreation",6,29,2023));
-
-        foreach (var transaction in transactions)
-        {
-            if (transaction.Date.Month == 6 )
-            {
-                Console.WriteLine(transaction.ToString());
-            }
-
-
-                
-        }
 
     }
 }
