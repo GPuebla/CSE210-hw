@@ -38,7 +38,7 @@ public abstract class Transaction
 
     public override String ToString()
     {
-        return $"{_amount}-{_description}-{_category.Name}-{_date.ToString("M/dd/yyyy")}-{_transactionId} - {_currentRecordBalance}";
+        return $"$ {_amount.ToString().PadRight(10)}{_description.PadRight(32)}{_category.Name.PadRight(30)}{_date.ToString("M/dd/yyyy").PadRight(15)}{_transactionId.PadRight(15)}$ {_currentRecordBalance.ToString().PadRight(10)}";
     }
 
     public DateTime Date

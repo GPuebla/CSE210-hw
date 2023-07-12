@@ -35,7 +35,7 @@ public class Category
 
     public void AddTransaction(String transactionDate, String description, double amount)
     {
-        transactionHistory.Add($"{transactionDate} - {description} - {amount.ToString()}");
+        transactionHistory.Add($"{transactionDate.PadRight(10)} - {description.PadRight(10)} - {amount.ToString().PadRight(10)}");
         _amount += amount;
     }
 
@@ -50,7 +50,7 @@ public class Category
             
         }
 
-        Console.WriteLine($" --------------------------------------------------------------------- \n");
+        Console.WriteLine($"\n");
     }
 
 
