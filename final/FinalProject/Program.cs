@@ -4,7 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
-
+        DataManager.SaveData();
         FinancialRecord record1 = new FinancialRecord();
         
         record1.AddTransaction(new Income(3500,"Paimment of salary",record1.GetCategories[0],record1));
