@@ -6,34 +6,37 @@ public abstract class Transaction
     private String _description;
     private Category _category;
     private DateTime _date;
+    private int _indexCategory;
     private String _transactionId; //date.ToString("Mddyyyyhmm");
     private double _currentRecordBalance;
     
 
-    public Transaction(double amount, string description, Category category, FinancialRecord FRobject)
+    public Transaction(double amount, string description, int indexCategory, FinancialRecord FRobject)
     {
         _amount = amount;
         _description = description;
-        _category = category;
+        _category = FRobject.GetCategories[indexCategory];
         _date = DateTime.Now;
         _transactionId = _date.ToString("Mddyyyyhmm");
         AddTransactionIntoRecord(FRobject);
         GetCurrentRecordBalance(FRobject);
-        UpdateCategory(category);
+        UpdateCategory(_category);
+        _indexCategory = indexCategory;
         
     }
-    public Transaction(double amount, string description, Category category, int monthNum, int dayNum, int yearNum,FinancialRecord FRobject)
+    public Transaction(double amount, string description, int indexCategory , int monthNum, int dayNum, int yearNum,FinancialRecord FRobject)
     {
         _amount = amount;
         _description = description;
-        _category = category;
+        _category = FRobject.GetCategories[indexCategory];
         DateTime today = DateTime.Now;
         int hourAndMin = int.Parse(today.ToString("hmm"));
         _date = new DateTime(yearNum, monthNum, dayNum);
         _transactionId = _date.ToString("Mddyyyy"+hourAndMin);
         AddTransactionIntoRecord(FRobject);
         GetCurrentRecordBalance(FRobject);
-        UpdateCategory(category);
+        UpdateCategory(_category);
+        _indexCategory = indexCategory;
     }
 
     public override String ToString()
@@ -77,6 +80,11 @@ public abstract class Transaction
     public virtual void UpdateCategory(Category c)
     {   
         c.AddTransaction(_date.ToString("M/dd/yyyy"),_description,_amount);
+    }
+
+    public String GetDataToSave()
+    {
+        return$"{_amount}**{_description}**{_indexCategory}**{_date.Month}**{_date.Day}**{_date.Year}";
     }
     
 }

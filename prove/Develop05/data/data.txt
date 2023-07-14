@@ -1,2 +1,3 @@
 C:\Users\Usuario\OneDrive\Documentos\GitHub\CSE210-hw\prove\Develop05\data\data.txt
 prove\Develop05\data\data.txt
+C:\Users\Usuario\OneDrive\Documentos\GitHub\CSE210-hw\prove\Develop05\data
