@@ -51,6 +51,13 @@ class Program
             Console.WriteLine(transaction.GetDataToSave());
         }
 
+        // DataManager.SaveData(record1);
+        DataManager.recordsList.Add("List1");
+        DataManager.recordsList.Add("List2");
+        DataManager.recordsList.Add("List3");
+
+        Console.WriteLine(DataManager.recordsList.Count());
+
     }
    
     public static void DisplayMenu()
