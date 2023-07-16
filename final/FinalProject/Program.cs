@@ -2,67 +2,57 @@ using System;
 
 class Program
 {
+    static String currentNameRecord = "";
     static void Main(string[] args)
     {
-        FinancialRecord record1 = new FinancialRecord();
-        // DisplayMenu();
+
+        DataManager.LoadRecordList();
+        FinancialRecord record = new FinancialRecord();
+        
+        DisplayMenu1(record);
+        DisplayMenu2(record);
+
+        DataManager.SaveData(record,currentNameRecord);
        
         
-        record1.AddTransaction(new Income(3500,"Paimment of salary",0,record1));
-        record1.AddTransaction(new Expense(1100,"Paimment of house rent",4,record1));
-        record1.AddTransaction(new Income(500,"Bonus for achievement",0,6,25,2023,record1));
-        record1.AddTransaction(new Expense(40,"Family outing to a restaurant",6,6,27,2023,record1));
-        record1.AddTransaction(new Income(300,"Paimment of salary",7,record1));
-        record1.AddTransaction(new Expense(300,"Paimment of house rent",4,record1));
-        record1.AddTransaction(new Income(500,"Bonus for achievement",1,6,28,2023,record1));
-        record1.AddTransaction(new Expense(400,"Family outing to a restaurant",6,6,29,2023,record1));
-        record1.AddTransaction(new Income(3800,"Paimment of salary",0,record1));
-        record1.AddTransaction(new Expense(100,"Paimment of house rent",3,record1));
-        record1.AddTransaction(new Income(200,"Bonus for achievement",1,6,29,2023,record1));
-        record1.AddTransaction(new Expense(240,"Family outing to a restaurant",6,6,30,2023,record1));
+        // record.AddTransaction(new Income(3500,"Paimment of salary",0,record));
+        // record.AddTransaction(new Expense(1100,"Paimment of house rent",4,record));
+        // record.AddTransaction(new Income(500,"Bonus for achievement",0,6,25,2023,record));
+        // record.AddTransaction(new Expense(40,"Family outing to a restaurant",6,6,27,2023,record));
+        // record.AddTransaction(new Income(300,"Paimment of salary",7,record));
+        // record.AddTransaction(new Expense(300,"Paimment of house rent",4,record));
+        // record.AddTransaction(new Income(500,"Bonus for achievement",1,6,28,2023,record));
+        // record.AddTransaction(new Expense(400,"Family outing to a restaurant",6,6,29,2023,record));
+        // record.AddTransaction(new Income(3800,"Paimment of salary",0,record));
+        // record.AddTransaction(new Expense(100,"Paimment of house rent",3,record));
+        // record.AddTransaction(new Income(200,"Bonus for achievement",1,6,29,2023,record));
+        // record.AddTransaction(new Expense(240,"Family outing to a restaurant",6,6,30,2023,record));
+
+        
 
         Console.WriteLine("-----------------------------------------------------------------------------------");
 
-        foreach (var transaction in record1.GetTransactions)
+        foreach (var transaction in record.GetTransactions)
         {
             Console.WriteLine($"{transaction.ToString()}");
         }
 
         Console.WriteLine("");
 
-        record1.ShowDetailCategory();
+        record.ShowDetailCategory();
 
         Console.WriteLine("");
 
-        Console.WriteLine("Totoal Expenses: $"+record1.TotalExpenses);
-        Console.WriteLine("Totoal Income: $"+record1.TotalIncome);
-        Console.WriteLine("Balanse: $"+record1.Balance);
-
-        Console.WriteLine("-----------------------------------------------------------------------------------");
-
-        record1.GetCategories[0].DisplayDetail();
-        record1.GetCategories[4].DisplayDetail();
-        record1.GetCategories[6].DisplayDetail();
-
-        Console.WriteLine("------------------------------------Example of format date to save---------------------------------");
-
-        foreach (var transaction in record1.GetTransactions)
-        {
-            Console.WriteLine(transaction.GetDataToSave());
-        }
-
-        // DataManager.SaveData(record1);
-        DataManager.recordsList.Add("List1");
-        DataManager.recordsList.Add("List2");
-        DataManager.recordsList.Add("List3");
-
-        Console.WriteLine(DataManager.recordsList.Count());
+        Console.WriteLine("Totoal Expenses: $"+record.TotalExpenses);
+        Console.WriteLine("Totoal Income: $"+record.TotalIncome);
+        Console.WriteLine("Balanse: $"+record.Balance);
 
     }
    
-    public static void DisplayMenu()
+    public static void DisplayMenu1(FinancialRecord fr)
     {
-        bool defaultMode = false; 
+        bool defaultMode = false;
+        bool isRecordCreate = false; 
         int menuOption = 0;
         
         do
@@ -82,12 +72,31 @@ class Program
             {
                 case 1:
                     defaultMode = false;  
-                    Console.WriteLine("case 1");
+                    Console.Write("Enter the name under which you want to save your financial records: ");
+                    currentNameRecord = Console.ReadLine();
+                    DataManager.AddRecordFinancialRecord(currentNameRecord);
+                    DataManager.SaveData(fr,currentNameRecord);
+
+                    isRecordCreate = true;
 
                     break;
                 case 2:
                     defaultMode = false;
-                    Console.WriteLine("case 2");
+                    Console.WriteLine("Select the financial record you wish to upload: ");
+                    
+                    int x = 0;
+
+                    foreach (var item in DataManager.recordsList)
+                    {
+                        x++;
+                        Console.WriteLine($" {x}- {item}");
+                    }
+
+                    int option  = int.Parse(Console.ReadLine());
+                    currentNameRecord = DataManager.recordsList[option-1];
+                    DataManager.LoadFinancialRecord(currentNameRecord,fr);
+                    
+                    isRecordCreate = true;
                     
                     break;
                 case 3:
@@ -115,11 +124,11 @@ class Program
                     break;
             }
 
-        } while (menuOption >0 && menuOption < 3);
+        } while (menuOption >0 && menuOption < 3 && !isRecordCreate);
 
     }
 
-    public static void DisplayMenu2()
+    public static void DisplayMenu2(FinancialRecord fr)
     {
         bool defaultMode = false; 
         int menuOption = 0;
@@ -130,7 +139,7 @@ class Program
             {   
                 // Console.Clear();
                 Console.WriteLine(" \n-------------------------------------- Menu Options: -------------------------------------- ");
-                Console.WriteLine("\n1) Record an income. \n2) List Goals. \n3) Save Goals. \n4) Load Goals. \n5) Record Event. \n6) Quit.");
+                Console.WriteLine("\n1) Display detail of transactions recorded. \n2) Display current financial status. \n3) Record income. \n4) Record expense. \n5) Record Event. \n6) Quit.");
                 Console.Write(" \n Please, select the option number that you want: ");
                 menuOption = int.Parse(Console.ReadLine());
                 // Console.Clear();
@@ -141,22 +150,53 @@ class Program
             {
                 case 1:
                     defaultMode = false;  
-                    Console.WriteLine("case 1");
+                    Console.WriteLine("Date".PadRight(15)+"TransactionId".PadRight(15)+"Amount".PadRight(12)+"Description".PadRight(32)+"Category".PadRight(30)+"Current Balance".PadRight(10)+"\n");
+                    foreach (var transaction in fr.GetTransactions)
+                    {
+                        Console.WriteLine($"{transaction.ToString()}");
+                    }
 
                     break;
                 case 2:
                     defaultMode = false;
-                    Console.WriteLine("case 2");
-                    
+                    char pad = '.';
+                    fr.ShowDetailCategory();
+
+                    Console.WriteLine("");
+
+                    Console.WriteLine($"Totoal Expenses: {"$".PadLeft(12,pad)}{fr.TotalExpenses}");
+                    Console.WriteLine($"Totoal Income: {"$".PadLeft(14,pad)}{fr.TotalIncome.ToString()}");
+                    Console.WriteLine($"Balanse: {"$".PadLeft(20,pad)}{fr.Balance.ToString()}");
+                        
                     break;
                 case 3:
                     defaultMode = false;
-                    Console.WriteLine("case 3");
+                    
+                    fr.DisplayCategoryList("I");
+                    Console.Write("Select the category of income: ");
+                    int indexCategoryI = int.Parse(Console.ReadLine()) -1 ;
+                    
+                    Console.Write("Enter the amount of transaction: ");
+                    double amountI = double.Parse(Console.ReadLine());
+                    Console.Write("Enter a brief description: ");
+                    String descriptionI = Console.ReadLine();
+
+                    fr.AddTransaction(new Income(amountI,descriptionI,indexCategoryI,fr));
 
                     break;
                 case 4:
                     defaultMode = false;
-                    Console.WriteLine("case 4");
+
+                    fr.DisplayCategoryList("E");
+                    Console.Write("Select the category of expense: ");
+                    int indexCategoryE = int.Parse(Console.ReadLine()) +1;
+
+                    Console.Write("Enter the amount of transaction: ");
+                    double amountE = double.Parse(Console.ReadLine());
+                    Console.Write("Enter a brief description: ");
+                    String descriptionE = Console.ReadLine();
+
+                    fr.AddTransaction(new Expense(amountE,descriptionE,indexCategoryE,fr));
                     
                     break;
                 case 5:

@@ -1,0 +1,12 @@
+3500**Paimment of salary**0**7**15**2023**I
+1100**Paimment of house rent**4**7**15**2023**E
+500**Bonus for achievement**0**6**25**2023**I
+40**Family outing to a restaurant**6**6**27**2023**E
+300**Paimment of salary**7**7**15**2023**I
+300**Paimment of house rent**4**7**15**2023**E
+500**Bonus for achievement**1**6**28**2023**I
+400**Family outing to a restaurant**6**6**29**2023**E
+3800**Paimment of salary**0**7**15**2023**I
+100**Paimment of house rent**3**7**15**2023**E
+200**Bonus for achievement**1**6**29**2023**I
+240**Family outing to a restaurant**6**6**30**2023**E

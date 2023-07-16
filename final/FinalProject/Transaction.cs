@@ -8,7 +8,8 @@ public abstract class Transaction
     private DateTime _date;
     private int _indexCategory;
     private String _transactionId; //date.ToString("Mddyyyyhmm");
-    private double _currentRecordBalance;
+    protected double _currentRecordBalance;
+    protected String _transactionType;
     
 
     public Transaction(double amount, string description, int indexCategory, FinancialRecord FRobject)
@@ -41,7 +42,7 @@ public abstract class Transaction
 
     public override String ToString()
     {
-        return $"$ {_amount.ToString().PadRight(10)}{_description.PadRight(32)}{_category.Name.PadRight(30)}{_date.ToString("M/dd/yyyy").PadRight(15)}{_transactionId.PadRight(15)}$ {_currentRecordBalance.ToString().PadRight(10)}";
+        return $"{_date.ToString("M/dd/yyyy").PadRight(15)}{_transactionId.PadRight(15)}$ {_amount.ToString().PadRight(10)}{_description.PadRight(32)}{_category.Name.PadRight(30)}$ {_currentRecordBalance.ToString().PadRight(10)}";
     }
 
     public DateTime Date
@@ -84,7 +85,7 @@ public abstract class Transaction
 
     public String GetDataToSave()
     {
-        return$"{_amount}**{_description}**{_indexCategory}**{_date.Month}**{_date.Day}**{_date.Year}";
+        return$"{_amount}**{_description}**{_indexCategory}**{_date.Month}**{_date.Day}**{_date.Year}**{_transactionType}";
     }
     
 }

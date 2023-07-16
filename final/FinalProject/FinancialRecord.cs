@@ -18,7 +18,7 @@ public class FinancialRecord
         categories.Add(new Category("Housing and supplies","E"));
         categories.Add(new Category("Health","E"));
         categories.Add(new Category("Transportation","E"));
-        categories.Add(new Category("Salaries","E"));
+        categories.Add(new Category("Entrepreneurship","E"));
         categories.Add(new Category("Education","E"));
         categories.Add(new Category("Leisure and culture","E"));
         categories.Add(new Category("Communications","E"));
@@ -64,6 +64,20 @@ public class FinancialRecord
         set{_balance = value;}
     }
 
+    public void DisplayCategoryList(String categoryType)
+    {
+        int x = 0;
+        foreach (var item in categories)
+        {   
+            if(item.CategoryType == categoryType)
+            {
+                x++;
+                Console.WriteLine($"{x}- {item.Name}");
+            }
+            
+        }
+    }
+
     public void ShowDetailCategory()
     {
         Console.WriteLine("Income by category:\n");
@@ -71,16 +85,15 @@ public class FinancialRecord
         {
             if(category.Amount != 0 && category.CategoryType == "I")
             {
-                Console.WriteLine($"{category.Name}.....${category.Amount}");
+                Console.WriteLine($"* {category.Name}.....${category.Amount}");
             }
         }
-        Console.WriteLine("---------------------------------------------------");
-        Console.WriteLine("Expenses by category:\n");
+        Console.WriteLine("\nExpenses by category:\n");
         foreach (var category in categories)
         {
             if(category.Amount != 0 && category.CategoryType == "E")
             {
-                Console.WriteLine($"{category.Name}.....${category.Amount}");
+                Console.WriteLine($"* {category.Name}.....${category.Amount}");
             }
         }
     }

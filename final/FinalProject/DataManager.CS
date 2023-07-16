@@ -5,11 +5,8 @@ public static class DataManager
     public static List<String> recordsList = new  List<String>();
     public static List<String> categoryList = new  List<String>();
 
-    public static void SaveData(FinancialRecord fr)
+    public static void SaveData(FinancialRecord fr, String name)
     {
-        Console.WriteLine("Insert the name of the file where your data will be saved");
-        String name = Console.ReadLine();
-
         String _fileNameToSave = $"{name}.txt";
         
         using (StreamWriter outputFile = new StreamWriter(_fileNameToSave))
@@ -22,9 +19,33 @@ public static class DataManager
         } 
     }
 
-    public static void ReadData(){}
+    public static void LoadRecordList()
+    {
+        string[] lines = System.IO.File.ReadAllLines("recordsList.txt");
 
-    public static void ReadData(String fileName, FinancialRecord FRobject)
+            foreach (string line in lines)
+            {
+                recordsList.Add(line);
+            }
+    }
+
+    public static void AddRecordFinancialRecord(String name)
+    {
+        recordsList.Add(name);
+        
+        using (StreamWriter outputFile = new StreamWriter("recordsList.txt"))
+        {
+
+             foreach (var item in recordsList)
+            {
+                outputFile.WriteLine(item);
+            }
+        } 
+    }
+
+
+
+    public static void LoadFinancialRecord(String fileName, FinancialRecord FRobject)
     {
         String description = "";
         int amount = 0;
@@ -32,6 +53,7 @@ public static class DataManager
         int monthNum = 0;
         int dayNum = 0;
         int yearNum = 0;
+        String transactionType = "";
 
         string filename =$"{fileName}.txt";
         string[] lines = System.IO.File.ReadAllLines(filename);
@@ -47,8 +69,16 @@ public static class DataManager
                 monthNum = int.Parse(parts[3]);
                 dayNum = int.Parse(parts[4]);
                 yearNum = int.Parse(parts[5]);
+                transactionType = parts[6];
 
-                FRobject.AddTransaction(new Income(amount,description,indexCategory,monthNum,dayNum,yearNum,FRobject));
+                if(transactionType == "E")
+                {
+                    FRobject.AddTransaction(new Expense(amount,description,indexCategory,monthNum,dayNum,yearNum,FRobject));
+                }
+                else if(transactionType == "I")
+                {
+                    FRobject.AddTransaction(new Income(amount,description,indexCategory,monthNum,dayNum,yearNum,FRobject));
+                }  
                 
             }
     }
