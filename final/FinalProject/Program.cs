@@ -13,39 +13,6 @@ class Program
         DisplayMenu2(record);
 
         DataManager.SaveData(record,currentNameRecord);
-       
-        
-        // record.AddTransaction(new Income(3500,"Paimment of salary",0,record));
-        // record.AddTransaction(new Expense(1100,"Paimment of house rent",4,record));
-        // record.AddTransaction(new Income(500,"Bonus for achievement",0,6,25,2023,record));
-        // record.AddTransaction(new Expense(40,"Family outing to a restaurant",6,6,27,2023,record));
-        // record.AddTransaction(new Income(300,"Paimment of salary",7,record));
-        // record.AddTransaction(new Expense(300,"Paimment of house rent",4,record));
-        // record.AddTransaction(new Income(500,"Bonus for achievement",1,6,28,2023,record));
-        // record.AddTransaction(new Expense(400,"Family outing to a restaurant",6,6,29,2023,record));
-        // record.AddTransaction(new Income(3800,"Paimment of salary",0,record));
-        // record.AddTransaction(new Expense(100,"Paimment of house rent",3,record));
-        // record.AddTransaction(new Income(200,"Bonus for achievement",1,6,29,2023,record));
-        // record.AddTransaction(new Expense(240,"Family outing to a restaurant",6,6,30,2023,record));
-
-        
-
-        Console.WriteLine("-----------------------------------------------------------------------------------");
-
-        foreach (var transaction in record.GetTransactions)
-        {
-            Console.WriteLine($"{transaction.ToString()}");
-        }
-
-        Console.WriteLine("");
-
-        record.ShowDetailCategory();
-
-        Console.WriteLine("");
-
-        Console.WriteLine("Totoal Expenses: $"+record.TotalExpenses);
-        Console.WriteLine("Totoal Income: $"+record.TotalIncome);
-        Console.WriteLine("Balanse: $"+record.Balance);
 
     }
    
@@ -139,7 +106,7 @@ class Program
             {   
                 // Console.Clear();
                 Console.WriteLine(" \n-------------------------------------- Menu Options: -------------------------------------- ");
-                Console.WriteLine("\n1) Display detail of transactions recorded. \n2) Display current financial status. \n3) Record income. \n4) Record expense. \n5) Record Event. \n6) Quit.");
+                Console.WriteLine("\n1) Display detail of transactions recorded. \n2) Display current financial status. \n3) Record income. \n4) Record expense. \n5) Quit.");
                 Console.Write(" \n Please, select the option number that you want: ");
                 menuOption = int.Parse(Console.ReadLine());
                 // Console.Clear();
@@ -201,12 +168,7 @@ class Program
                     break;
                 case 5:
                     defaultMode = false;
-                    Console.WriteLine("case 5");
-                    
-                    break;
-                case 6:
-                    defaultMode = false;
-                    Console.WriteLine("case 6");
+            
                     
                     break;
                 default:
@@ -229,6 +191,6 @@ class Program
                     break;
             }
 
-        } while (menuOption >0 && menuOption < 6);
+        } while (menuOption >0 && menuOption < 5);
     }
 }
