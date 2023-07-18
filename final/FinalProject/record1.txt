@@ -10,3 +10,4 @@
 100**Payment of house rent**3**7**15**2023**E
 200**Bonus for achievement**1**6**29**2023**I
 240**Family outing to a restaurant**6**6**30**2023**E
+500**Company bonus**0**7**17**2023**I
