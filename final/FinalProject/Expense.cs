@@ -1,5 +1,8 @@
 public class Expense : Transaction
 {
+
+    private String payee = "";
+    
     public Expense(double amount, string description, int indexCategory, FinancialRecord FRobject) : base(amount, description, indexCategory,FRobject)
     {
         _transactionType = "E";

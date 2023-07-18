@@ -168,7 +168,6 @@ class Program
                     break;
                 case 5:
                     defaultMode = false;
-            
                     
                     break;
                 default:

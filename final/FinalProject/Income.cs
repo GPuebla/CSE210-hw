@@ -2,6 +2,9 @@ using System;
 
 public class Income : Transaction
 {
+    private String payer = "";
+    private String source = "";
+
     public Income(double amount, string description, int indexCategory, FinancialRecord FRobject) : base(amount, description, indexCategory,FRobject)
     {
         _transactionType = "I";
