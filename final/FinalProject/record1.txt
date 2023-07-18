@@ -1,13 +1,17 @@
-3500**Payment of salary**0**7**15**2023**I
-1100**Payment of house rent**4**7**15**2023**E
-500**Bonus for achievement**0**6**25**2023**I
-40**Family outing to a restaurant**6**6**27**2023**E
-300**Payment of salary**7**7**15**2023**I
-300**Payment of house rent**4**7**15**2023**E
-500**Bonus for achievement**1**6**28**2023**I
-400**Family outing to a restaurant**6**6**29**2023**E
-3800**Payment of salary**0**7**15**2023**I
-100**Payment of house rent**3**7**15**2023**E
-200**Bonus for achievement**1**6**29**2023**I
-240**Family outing to a restaurant**6**6**30**2023**E
-500**Company bonus**0**7**17**2023**I
+3500**Payment of salary**0**7**15**2023**I** - 
+1100**Payment of house rent**4**7**15**2023**E**-
+500**Bonus for achievement**0**6**25**2023**I** - 
+40**Family outing to a restaurant**6**6**27**2023**E**-
+300**Payment of salary**7**7**15**2023**I** - 
+300**Payment of house rent**4**7**15**2023**E**-
+500**Bonus for achievement**1**6**28**2023**I** - 
+400**Family outing to a restaurant**6**6**29**2023**E**-
+3800**Payment of salary**0**7**15**2023**I** - 
+100**Payment of house rent**3**7**15**2023**E**-
+200**Bonus for achievement**1**6**29**2023**I** - 
+240**Family outing to a restaurant**6**6**30**2023**E**-
+500**Company bonus**0**7**17**2023**I** - 
+520**Payment for my nice performance**0**7**18**2023**I** - 
+50**book purchase**8**7**18**2023**E**-
+100**Extra works**0**7**18**2023**I**Pedro Dias - Santander Bank
+30**pyment of cellphone company**10**7**18**2023**E**CCE company

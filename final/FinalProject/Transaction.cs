@@ -10,6 +10,7 @@ public abstract class Transaction
     private String _transactionId; //date.ToString("Mddyyyyhmm");
     protected double _currentRecordBalance;
     protected String _transactionType;
+    protected String _extraInfo;
     
 
     public Transaction(double amount, string description, int indexCategory, FinancialRecord FRobject)
@@ -25,7 +26,7 @@ public abstract class Transaction
         _indexCategory = indexCategory;
         
     }
-    public Transaction(double amount, string description, int indexCategory , int monthNum, int dayNum, int yearNum,FinancialRecord FRobject)
+    public Transaction(double amount, string description, int indexCategory , int monthNum, int dayNum, int yearNum,String extraInfo, FinancialRecord FRobject)
     {
         _amount = amount;
         _description = description;
@@ -73,6 +74,7 @@ public abstract class Transaction
     }
 
     public abstract void AddTransactionIntoRecord( FinancialRecord fr);
+    public abstract void GetExtraInformation();
     protected virtual void GetCurrentRecordBalance(FinancialRecord fr)
     {
         _currentRecordBalance = fr.Balance;
@@ -85,7 +87,8 @@ public abstract class Transaction
 
     public String GetDataToSave()
     {
-        return$"{_amount}**{_description}**{_indexCategory}**{_date.Month}**{_date.Day}**{_date.Year}**{_transactionType}";
+        return$"{_amount}**{_description}**{_indexCategory}**{_date.Month}**{_date.Day}**{_date.Year}**{_transactionType}**{_extraInfo}";
     }
+
     
 }

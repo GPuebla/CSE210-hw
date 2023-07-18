@@ -54,6 +54,7 @@ public static class DataManager
         int dayNum = 0;
         int yearNum = 0;
         String transactionType = "";
+        String extraInfo = "";
 
         string filename =$"{fileName}.txt";
         string[] lines = System.IO.File.ReadAllLines(filename);
@@ -70,14 +71,15 @@ public static class DataManager
                 dayNum = int.Parse(parts[4]);
                 yearNum = int.Parse(parts[5]);
                 transactionType = parts[6];
+                extraInfo = parts[7];
 
                 if(transactionType == "E")
                 {
-                    FRobject.AddTransaction(new Expense(amount,description,indexCategory,monthNum,dayNum,yearNum,FRobject));
+                    FRobject.AddTransaction(new Expense(amount,description,indexCategory,monthNum,dayNum,yearNum,extraInfo,FRobject));
                 }
                 else if(transactionType == "I")
                 {
-                    FRobject.AddTransaction(new Income(amount,description,indexCategory,monthNum,dayNum,yearNum,FRobject));
+                    FRobject.AddTransaction(new Income(amount,description,indexCategory,monthNum,dayNum,yearNum,extraInfo,FRobject));
                 }  
                 
             }
